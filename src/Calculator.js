@@ -20,6 +20,13 @@ class Calculator {
 		  return numerator / denominator;
 		}
 	}
+
+	multiply(...args) {
+		const result = args.reduce((product, value) => {
+			return product * value;
+		});
+		return result;
+	}
 }
 
 export default Calculator;
