@@ -5,6 +5,13 @@ class Calculator {
 		});
 		return result;
 	}
+
+	subtract(...args) {
+		const result = args.reduce((difference, value) => {
+			return difference - value;
+		});
+		return result;
+	}
 }
 
 export default Calculator;
