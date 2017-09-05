@@ -24,5 +24,5 @@ describe('rendering props in the UI', () => {
   it('renders the NumberContainer as a child within the App component', () => {
     const app = shallow(<App />);
     expect(app.containsMatchingElement(<NumberContainer />)).toEqual(true);
-  })
+  });
 });
