@@ -28,4 +28,13 @@ describe('unit testing a calculator', () => {
       "You can only supply two numbers to this function."
 		));
 	});
+
+	it('multiplies numbers', () => {
+		const calculator = new Calculator();
+		const smallProduct = calculator.multiply(21, 2);
+		expect(smallProduct).toEqual(42);
+
+		const bigProduct = calculator.multiply(2, 22, 222, 2222);
+		expect(bigProduct).toEqual(21704496);
+	});
 });
