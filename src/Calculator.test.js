@@ -24,7 +24,8 @@ describe('unit testing a calculator', () => {
 		const quotient = calculator.divide(84, 2);
 		expect(quotient).toEqual(42);
 
-		const improperUsage = calculator.divide(84, 2, 1, 3);
-		expect(typeOf improperUsage).toEqual(Error);
+		expect(() => { calculator.divide(84, 2, 1, 3) }).toThrow(new Error(
+      "You can only supply two numbers to this function."
+		));
 	});
 });
