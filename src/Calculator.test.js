@@ -1,8 +1,9 @@
 import Calculator from './Calculator'
 
 describe('unit testing a calculator', () => {
+  const calculator = new Calculator();
+
   it('adds numbers', () => {
-    const calculator = new Calculator();
     const smallSum = calculator.add(21, 21);
     expect(smallSum).toEqual(42);
 
@@ -11,7 +12,6 @@ describe('unit testing a calculator', () => {
   });
 
 	it('subtracts numbers', () => {
-		const calculator = new Calculator();
 		const smallDifference = calculator.subtract(43, 1);
 		expect(smallDifference).toEqual(42);
 
@@ -20,7 +20,6 @@ describe('unit testing a calculator', () => {
 	});
 
 	it('divides numbers', () => {
-		const calculator = new Calculator();
 		const quotient = calculator.divide(84, 2);
 		expect(quotient).toEqual(42);
 
@@ -30,7 +29,6 @@ describe('unit testing a calculator', () => {
 	});
 
 	it('multiplies numbers', () => {
-		const calculator = new Calculator();
 		const smallProduct = calculator.multiply(21, 2);
 		expect(smallProduct).toEqual(42);
 
