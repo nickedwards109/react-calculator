@@ -13,4 +13,10 @@ describe('form input component', () => {
 		inputContainer.find('input').simulate('change', {target: {value: '42'}});
 		expect(spy.calledWith(42)).toEqual(true);
 	});
+
+	it('renders an error message when string data is input', () => {
+		const inputContainer = shallow(<InputContainer />);
+		inputContainer.find('input').simulate('change', {target: {value: 'asdf'}});
+		expect(inputContainer.find('div').text()).toContain('You can only enter a number.')
+	});
 });
