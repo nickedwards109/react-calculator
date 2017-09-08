@@ -8,15 +8,23 @@ class InputContainer extends React.Component {
   }
 
   handleChange(event) {
-  	try {
-  		if (event.target.value.length > 0) {
-  			if (isNaN(parseFloat(event.target.value))) { throw new Error() }
-  		}
-      this.props.handleInputChange(parseFloat(event.target.value));
-  		this.setState({ typeError: null })
-  	} catch (event) {
-  		this.setState({ typeError: ' You can only enter a number. ' })
-  	}
+    const number = this.getInputAsNumber(event.target.value);
+    this.props.handleInputChange(parseFloat(number));
+  }
+
+  getInputAsNumber(value) {
+    if (value.length === 0) { return 0 }
+    try {
+      const number = parseFloat(value);
+      if (isNaN(number)) { throw new Error() }
+      else {
+        this.setState({ typeError: null });
+        return number;
+      }
+    } catch (event) {
+    	this.setState({ typeError: ' You can only enter a number. ' });
+      return 0;
+    }
   }
 
   render() {

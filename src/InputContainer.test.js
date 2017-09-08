@@ -30,7 +30,8 @@ describe('form input component', () => {
 	});
 
 	it('renders an error message when string data is input', () => {
-		const inputContainer = shallow(<InputContainer />);
+		const spy = sinon.spy();
+		const inputContainer = shallow(<InputContainer handleInputChange={spy} />);
 		inputContainer.find('input').simulate('change', {target: {value: 'asdf'}});
 		expect(inputContainer.find('div').text()).toContain('You can only enter a number.')
 	});
