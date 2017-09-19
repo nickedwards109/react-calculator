@@ -41,19 +41,19 @@ describe('interacting with the calculator', () => {
     expect(app.state('operation')).toEqual(null);
 
     const addButton = app.find('.add');
-    ReactTestUtils.Simulate.click(addButton);
+    addButton.simulate('click');
     expect(app.state('operation')).toEqual('addition');
 
     const subtractButton = app.find('.subtract');
-    ReactTestUtils.Simulate.click(subtractButton);
+    subtractButton.simulate('click');
     expect(app.state('operation')).toEqual('subtraction');
 
     const multiplyButton = app.find('.multiply');
-    ReactTestUtils.Simulate.click(multiplyButton);
+    multiplyButton.simulate('click');
     expect(app.state('operation')).toEqual('multiplication');
 
     const divideButton = app.find('.divide');
-    ReactTestUtils.Simulate.click(divideButton);
+    divideButton.simulate('click');
     expect(app.state('operation')).toEqual('division');
   });
 });
