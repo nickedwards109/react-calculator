@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
 import ReactTestUtils from 'react-dom/test-utils';
 
 import App from './App';
@@ -42,7 +43,7 @@ describe('interacting with the calculator', () => {
   });
 
   it('sets the operation state when an operation button is clicked', () => {
-    const app = shallow(<App />);
+    const app = mount(<App />);
 
     const subtractButton = app.find('.subtract');
     subtractButton.simulate('click');
