@@ -11,7 +11,7 @@ class App extends Component {
     this.updateSecondValue = this.updateSecondValue.bind(this);
     this.updateOperation = this.updateOperation.bind(this);
     this.calculator = new Calculator();
-    this.state = { firstValue: null, secondValue: null, operation: null, result: null }
+    this.state = { firstValue: null, secondValue: null, operation: 'addition', result: null }
   }
 
   updateFirstValue(value) {

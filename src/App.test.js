@@ -43,7 +43,7 @@ describe('interacting with the calculator', () => {
 
   it('sets the operation state when an operation button is clicked', () => {
     const app = shallow(<App />);
-    
+
     const subtractButton = app.find('.subtract');
     subtractButton.simulate('click');
     expect(app.state('operation')).toEqual('subtraction');
