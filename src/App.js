@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ResultContainer from './ResultContainer';
 import InputContainer from './InputContainer';
-import OperationButtons from './OperationButtons';
+import ButtonsContainer from './ButtonsContainer';
 import Calculator from './Calculator';
 
 class App extends Component {
@@ -34,7 +34,7 @@ class App extends Component {
       <div>
         <InputContainer label="First number: " handleInputChange={this.updateFirstValue}/>
         <InputContainer label="Second number: " handleInputChange={this.updateSecondValue}/>
-        <OperationButtons updateOperation={this.updateOperation}/>
+        <ButtonsContainer updateOperation={this.updateOperation}/>
         <ResultContainer number={this.state.result}/>
       </div>
     );

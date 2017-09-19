@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import OperationButton from './OperationButton';
 
-class OperationButtons extends Component {
+class ButtonsContainer extends Component {
   constructor(props) {
     super(props);
     this.updateOperation = this.updateOperation.bind(this);
@@ -19,13 +20,13 @@ class OperationButtons extends Component {
               is not self-invoked. This results in the callback only being invoked
               when the onClick event happens.
         */}
-        <button className='add' onClick={() => {this.updateOperation('addition')}}>Add</button>
-        <button className='subtract' onClick={() => {this.updateOperation('subtraction')}}>Subtract</button>
-        <button className='multiply' onClick={() => {this.updateOperation('multiplication')}}>Multiply</button>
-        <button className='divide' onClick={() => {this.updateOperation('division')}}>Divide</button>
+        <OperationButton operation='add' updateOperation={this.updateOperation} />
+        <OperationButton operation='subtract' updateOperation={this.updateOperation} />
+        <OperationButton operation='multiply' updateOperation={this.updateOperation} />
+        <OperationButton operation='divide' updateOperation={this.updateOperation} />
       </div>
     );
   }
 }
 
-export default OperationButtons;
+export default ButtonsContainer;
