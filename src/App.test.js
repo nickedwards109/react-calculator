@@ -36,17 +36,21 @@ describe('interacting with the calculator', () => {
     expect(app.find('ResultContainer').props()).toEqual({'number': 42});
   });
 
+  it('starts at a default operation state of addition', () => {
+    const app = shallow(<App />);
+    expect(app.state('operation')).toEqual('addition');
+  });
+
   it('sets the operation state when an operation button is clicked', () => {
     const app = shallow(<App />);
-    expect(app.state('operation')).toEqual(null);
+    
+    const subtractButton = app.find('.subtract');
+    subtractButton.simulate('click');
+    expect(app.state('operation')).toEqual('subtraction');
 
     const addButton = app.find('.add');
     addButton.simulate('click');
     expect(app.state('operation')).toEqual('addition');
-
-    const subtractButton = app.find('.subtract');
-    subtractButton.simulate('click');
-    expect(app.state('operation')).toEqual('subtraction');
 
     const multiplyButton = app.find('.multiply');
     multiplyButton.simulate('click');
