@@ -9,8 +9,9 @@ class App extends Component {
     super(props);
     this.updateFirstValue = this.updateFirstValue.bind(this);
     this.updateSecondValue = this.updateSecondValue.bind(this);
+    this.updateOperation = this.updateOperation.bind(this);
     this.calculator = new Calculator();
-    this.state = { firstValue: null, secondValue: null, result: null }
+    this.state = { firstValue: null, secondValue: null, operation: null, result: null }
   }
 
   updateFirstValue(value) {
@@ -23,11 +24,27 @@ class App extends Component {
     this.setState({ secondValue: value, result: result })
   }
 
+  updateOperation(operation) {
+    this.setState({ operation: operation });
+  }
+
   render() {
     return (
       <div>
         <InputContainer label="First number: " handleInputChange={this.updateFirstValue}/>
         <InputContainer label="Second number: " handleInputChange={this.updateSecondValue}/>
+        <div>
+          {/* I got confused for a while when I tried onClick=updateOperation('addition')
+                and the function was being self-invoked due to the ().
+              My solution is to encapsulate the callback in an anonymous function which
+                is not self-invoked. This results in the callback only being invoked
+                when the onClick event happens.
+          */}
+          <button className='add' onClick={() => {this.updateOperation('addition')}}>Add</button>
+          <button className='subtract' onClick={() => {this.updateOperation('subtraction')}}>Subtract</button>
+          <button className='multiply' onClick={() => {this.updateOperation('multiplication')}}>Multiply</button>
+          <button className='divide' onClick={() => {this.updateOperation('division')}}>Divide</button>
+        </div>
         <ResultContainer number={this.state.result}/>
       </div>
     );
