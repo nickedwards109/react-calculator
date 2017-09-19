@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { shallow } from 'enzyme';
+import ReactTestUtils from 'react-dom/test-utils';
 
 import App from './App';
 import ResultContainer from './ResultContainer';
@@ -33,5 +34,26 @@ describe('interacting with the calculator', () => {
     const app = shallow(<App />);
     app.setState({ result: 42 });
     expect(app.find('ResultContainer').props()).toEqual({'number': 42});
+  });
+
+  it('sets the operation state when an operation button is clicked', () => {
+    const app = shallow(<App />);
+    expect(app.state('operation')).toEqual(null);
+
+    const addButton = app.find('.add');
+    ReactTestUtils.Simulate.click(addButton);
+    expect(app.state('operation')).toEqual('addition');
+
+    const subtractButton = app.find('.subtract');
+    ReactTestUtils.Simulate.click(subtractButton);
+    expect(app.state('operation')).toEqual('subtraction');
+
+    const multiplyButton = app.find('.multiply');
+    ReactTestUtils.Simulate.click(multiplyButton);
+    expect(app.state('operation')).toEqual('multiplication');
+
+    const divideButton = app.find('.divide');
+    ReactTestUtils.Simulate.click(divideButton);
+    expect(app.state('operation')).toEqual('division');
   });
 });
