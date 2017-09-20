@@ -61,4 +61,42 @@ describe('interacting with the calculator', () => {
     divideButton.simulate('click');
     expect(app.state('operation')).toEqual('division');
   });
+
+  it('sets a CSS class of selected to a button that is clicked, and only that button', () => {
+    const app = mount(<App />);
+    const addButton = app.find('.add');
+    const subtractButton = app.find('.subtract');
+    const multiplyButton = app.find('.multiply');
+    const divideButton = app.find('.divide');
+
+    // By default, the Add button should be selected
+    expect(addButton.hasClass('selected')).toEqual(true);
+    expect(subtractButton.hasClass('selected')).toEqual(false);
+    expect(multiplyButton.hasClass('selected')).toEqual(false);
+    expect(divideButton.hasClass('selected')).toEqual(false);
+
+    addButton.simulate('click');
+    expect(addButton.hasClass('selected')).toEqual(true);
+    expect(subtractButton.hasClass('selected')).toEqual(false);
+    expect(multiplyButton.hasClass('selected')).toEqual(false);
+    expect(divideButton.hasClass('selected')).toEqual(false);
+
+    subtractButton.simulate('click');
+    expect(subtractButton.hasClass('selected')).toEqual(true);
+    expect(addButton.hasClass('selected')).toEqual(false);
+    expect(multiplyButton.hasClass('selected')).toEqual(false);
+    expect(divideButton.hasClass('selected')).toEqual(false);
+
+    multiplyButton.simulate('click');
+    expect(multiplyButton.hasClass('selected')).toEqual(true);
+    expect(addButton.hasClass('selected')).toEqual(false);
+    expect(subtractButton.hasClass('selected')).toEqual(false);
+    expect(divideButton.hasClass('selected')).toEqual(false);
+
+    divideButton.simulate('click');
+    expect(divideButton.hasClass('selected')).toEqual(true);
+    expect(addButton.hasClass('selected')).toEqual(false);
+    expect(subtractButton.hasClass('selected')).toEqual(false);
+    expect(multiplyButton.hasClass('selected')).toEqual(false);
+  });
 });
