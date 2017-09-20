@@ -39,7 +39,7 @@ describe('interacting with the calculator', () => {
 
   it('starts at a default operation state of addition', () => {
     const app = shallow(<App />);
-    expect(app.state('operation')).toEqual('addition');
+    expect(app.state('operation')).toEqual('add');
   });
 
   it('sets the operation state when an operation button is clicked', () => {
@@ -47,19 +47,19 @@ describe('interacting with the calculator', () => {
 
     const subtractButton = app.find('.subtract');
     subtractButton.simulate('click');
-    expect(app.state('operation')).toEqual('subtraction');
+    expect(app.state('operation')).toEqual('subtract');
 
     const addButton = app.find('.add');
     addButton.simulate('click');
-    expect(app.state('operation')).toEqual('addition');
+    expect(app.state('operation')).toEqual('add');
 
     const multiplyButton = app.find('.multiply');
     multiplyButton.simulate('click');
-    expect(app.state('operation')).toEqual('multiplication');
+    expect(app.state('operation')).toEqual('multiply');
 
     const divideButton = app.find('.divide');
     divideButton.simulate('click');
-    expect(app.state('operation')).toEqual('division');
+    expect(app.state('operation')).toEqual('divide');
   });
 
   it('sets a CSS class of selected to a button that is clicked, and only that button', () => {
