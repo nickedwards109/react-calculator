@@ -35,7 +35,7 @@ class App extends Component {
         <InputContainer label="First number: " handleInputChange={this.updateFirstValue}/>
         <InputContainer label="Second number: " handleInputChange={this.updateSecondValue}/>
         <ButtonsContainer selected={this.state.operation} updateOperation={this.updateOperation}/>
-        <ResultContainer number={this.state.result}/>
+        <ResultContainer operation={this.state.operation} number={this.state.result}/>
       </div>
     );
   }

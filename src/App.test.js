@@ -34,7 +34,7 @@ describe('interacting with the calculator', () => {
   it('sets props in the ResultContainer when app state is set', () => {
     const app = shallow(<App />);
     app.setState({ result: 42 });
-    expect(app.find('ResultContainer').props()).toEqual({'number': 42});
+    expect(app.find('ResultContainer').props().number).toEqual(42);
   });
 
   it('starts at a default operation state of addition', () => {
