@@ -132,4 +132,35 @@ describe('interacting with the calculator', () => {
     divideButton.simulate('click');
     expect(results.text()).toContain('The quotient is');
   });
+
+  it('does the proper math operation depending on which button is selected', () => {
+    const app = mount(<App />);
+    const addButton = app.find('.add');
+    const subtractButton = app.find('.subtract');
+    const multiplyButton = app.find('.multiply');
+    const divideButton = app.find('.divide');
+    const inputContainer1 = app.find('InputContainer').get(0);
+    const inputContainer2 = app.find('InputCOntainer').get(1);
+    const results = app.find('ResultContainer');
+
+    addButton.simulate('click');
+    inputContainer1.props.handleInputChange(100);
+    inputContainer2.props.handleInputChange(5);
+    expect(results.text()).toContain('105');
+
+    subtractButton.simulate('click');
+    inputContainer1.props.handleInputChange(100);
+    inputContainer2.props.handleInputChange(5);
+    expect(results.text()).toContain('95');
+
+    multiplyButton.simulate('click');
+    inputContainer1.props.handleInputChange(100);
+    inputContainer2.props.handleInputChange(5);
+    expect(results.text()).toContain('500');
+
+    divideButton.simulate('click');
+    inputContainer1.props.handleInputChange(100);
+    inputContainer2.props.handleInputChange(5);
+    expect(results.text()).toContain('20');
+  });
 });
