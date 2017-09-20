@@ -140,7 +140,7 @@ describe('interacting with the calculator', () => {
     const multiplyButton = app.find('.multiply');
     const divideButton = app.find('.divide');
     const inputContainer1 = app.find('InputContainer').get(0);
-    const inputContainer2 = app.find('InputCOntainer').get(1);
+    const inputContainer2 = app.find('InputContainer').get(1);
     const results = app.find('ResultContainer');
 
     addButton.simulate('click');
@@ -157,7 +157,7 @@ describe('interacting with the calculator', () => {
     inputContainer1.props.handleInputChange(100);
     inputContainer2.props.handleInputChange(5);
     expect(results.text()).toContain('500');
-
+    
     divideButton.simulate('click');
     inputContainer1.props.handleInputChange(100);
     inputContainer2.props.handleInputChange(5);
