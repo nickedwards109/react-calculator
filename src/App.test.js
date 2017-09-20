@@ -99,4 +99,28 @@ describe('interacting with the calculator', () => {
     expect(subtractButton.hasClass('selected')).toEqual(false);
     expect(multiplyButton.hasClass('selected')).toEqual(false);
   });
+
+  it('displays a specific message for each math operation', () => {
+    const app = mount(<App />);
+    const addButton = app.find('.add');
+    const subtractButton = app.find('.subtract');
+    const multiplyButton = app.find('.multiply');
+    const divideButton = app.find('.divide');
+
+    //  By default, addition should be selected
+    const results = app.find('ResultContainer');
+    expect(results.text()).toContain('The sum is');
+
+    addButton.simulate('click');
+    expect(results.text()).toContain('The sum is');
+
+    subtractButton.simulate('click');
+    expect(results.text()).toContain('The difference is');
+
+    multiplyButton.simulate('click');
+    expect(results.text()).toContain('The product is');
+
+    divideButton.simulate('click');
+    expect(results.text()).toContain('The quotient is');
+  });
 });
