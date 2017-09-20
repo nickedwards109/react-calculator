@@ -14,16 +14,10 @@ class ButtonsContainer extends Component {
   render() {
     return (
       <div>
-        {/* I got confused for a while when I tried onClick=updateOperation('addition')
-              and the function was being self-invoked due to the ().
-            My solution is to encapsulate the callback in an anonymous function which
-              is not self-invoked. This results in the callback only being invoked
-              when the onClick event happens.
-        */}
-        <OperationButton operation='add' updateOperation={this.updateOperation} />
-        <OperationButton operation='subtract' updateOperation={this.updateOperation} />
-        <OperationButton operation='multiply' updateOperation={this.updateOperation} />
-        <OperationButton operation='divide' updateOperation={this.updateOperation} />
+        <OperationButton selected={this.props.selected} operation='add' updateOperation={this.updateOperation} />
+        <OperationButton selected={this.props.selected} operation='subtract' updateOperation={this.updateOperation} />
+        <OperationButton selected={this.props.selected} operation='multiply' updateOperation={this.updateOperation} />
+        <OperationButton selected={this.props.selected} operation='divide' updateOperation={this.updateOperation} />
       </div>
     );
   }
